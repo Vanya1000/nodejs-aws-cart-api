@@ -1,20 +1,32 @@
-import { CartItem } from '../../cart/models';
+export enum OrderStatus {
+  Open = 'OPEN',
+  Approved = 'APPROVED',
+  Confirmed = 'CONFIRMED',
+  Sent = 'SENT',
+  Completed = 'COMPLETED',
+  Cancelled = 'CANCELLED',
+}
 
-export type Order = {
-  id?: string,
+export interface Payment {
+  method: string;
+}
+
+export interface Delivery {
+  address: string;
+  firstName: string;
+  lastName: string;
+  comment?: string;
+}
+
+export interface Order {
+  id: string;
   userId: string;
   cartId: string;
-  items: CartItem[]
-  payment: {
-    type: string,
-    address?: any,
-    creditCard?: any,
-  },
-  delivery: {
-    type: string,
-    address: any,
-  },
-  comments: string,
-  status: string;
+  payment: Payment;
+  delivery: Delivery;
+  comments?: string;
+  status: OrderStatus;
   total: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
