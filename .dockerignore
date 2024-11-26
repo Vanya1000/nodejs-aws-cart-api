@@ -1,0 +1,15 @@
+node_modules
+dist
+cdk.out
+
+.env
+.env_example
+
+.eslint*
+.prettier*
+.gitignore
+
+test
+*.spec.ts
+README.md
+*.log
